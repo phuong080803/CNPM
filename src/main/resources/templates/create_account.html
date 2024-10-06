@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Account</title>
+    <link rel="stylesheet" href="style_create.css">
+    <script>
+        function validatePasswords() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+
+            if (password !== confirmPassword) {
+                alert("Mật khẩu không khớp!");
+                return false;
+            }
+            return true;
+        }
+
+        function handleRegister() {
+            if (validatePasswords()) {
+                // Nếu mật khẩu hợp lệ, chuyển đến trang đăng ký
+                document.getElementById("signup-form").submit();
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div class="wireframe2">
+    <div class="rectangle1">
+        <button type="button" class="log-in" onclick="handleRegister()">Đăng ký</button>
+        <div class="already-have-account">
+            <span>Đã có tài khoản? </span>
+            <a href="/login" class="login">Đăng nhập</a>
+        </div>
+    </div>
+
+    <div class="create-new-account">Tạo tài khoản mới</div>
+
+    <div class="error-message" th:if="${error}" th:text="${error}"></div>
+
+    <form id="signup-form" action="/signup" method="post">
+        <div class="group23 fullname-group">
+            <div class="rectangle24"></div>
+            <input type="text" id="full-name" name="full-name" class="input-field" placeholder="Họ và tên" required>
+        </div>
+
+        <div class="group25">
+            <div class="rectangle24"></div>
+            <input type="text" id="username" name="username" class="input-field" placeholder="Tên đăng nhập" required>
+        </div>
+
+        <div class="group23 password-group">
+            <div class="rectangle24"></div>
+            <input type="password" id="password" name="password" class="input-field" placeholder="Mật khẩu" required>
+        </div>
+
+        <div class="group23 confirm-password-group">
+            <div class="rectangle24"></div>
+            <input type="password" id="confirm-password" name="confirm-password" class="input-field" placeholder="Xác nhận mật khẩu" required>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

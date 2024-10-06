@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" />
+    <link rel="stylesheet" href="/employee_styles.css" />
+</head>
+<body>
+<div class="main-container">
+    <div class="rectangle">
+        <div class="rectangle-1"><span class="home-page">Home Page</span></div>
+        <div class="rectangle-2">
+            <button class="clock-in">Employee</button>
+        </div>
+        <div class="rectangle-3">
+            <button class="salary">ClockIn<br /></button>
+        </div>
+        <div class="rectangle-4">
+            <button class="notification">Salary<br /></button>
+        </div>
+        <div class="rectangle-5"><button class="absence">Absence</button></div>
+        <div class="rectangle-6"><button class="support">Support</button></div>
+    </div>
+
+    <!-- Header Section -->
+    <div class="Rectangle38">
+        <div class="Workday">WorkDay</div>
+        <div class="Group33">
+            <div class="Rectangle39">
+                <input type="search" name="search" placeholder="Search" required>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section -->
+
+    <!-- Icons Section -->
+    <div class="Group36">
+        <div class="AccountCircle">
+            <img src="/asset/icon.png" alt="">
+        </div>
+        <!-- Dropdown menu -->
+        <div class="dropdown-menu" id="profileMenu" style="display: none;">
+            <ul>
+                <li><button id="profileBtn">Profile</button></li>
+                <li><button id="logoutBtn">Log out</button></li>
+            </ul>
+        </div>
+
+
+        <!-- Dropdown menu -->
+        <div class="Bell">
+            <img src="/asset/bell.png" alt="">
+        </div>
+        <div class="Chat">
+            <img src="/asset/mess.png" alt="">
+        </div>
+    </div>
+    <!-- Icons Section -->
+
+    <div class="rectangle-c"><span class="add">Add</span></div>
+
+    <div class="rectangle-d">
+        <span class="name-staff-id-1">Name - StaffID</span>
+    </div>
+    <div class="rectangle-e">
+        <span class="name-staff-id-2">Name - StaffID</span>
+    </div>
+    <div class="rectangle-f">
+        <span class="name-staff-id-3">Name - StaffID</span>
+    </div>
+    <div class="rectangle-g">
+        <span class="name-staff-id-4">Name - StaffID</span>
+    </div>
+    <div class="rectangle-h">
+        <span class="name-staff-id-5">Name - StaffID</span>
+    </div>
+    <div class="rectangle-0">
+        <button class="button-add">Add</button>
+    </div>
+
+    <script>
+        function displayEmployees(employees) {
+            const container1 = document.querySelector('.name-staff-id-1');
+            const container2 = document.querySelector('.name-staff-id-2');
+            const container3 = document.querySelector('.name-staff-id-3');
+            const container4 = document.querySelector('.name-staff-id-4');
+            const container5 = document.querySelector('.name-staff-id-5');
+            const container6 = document.querySelector('.name-staff-id-6');
+
+            employees.forEach((employee, index) => {
+                const employeeText = `${employee.name} - ${employee.id_employee}`;
+
+                switch (index) {
+                    case 0:
+                        container1.textContent = employeeText;
+                        break;
+                    case 1:
+                        container2.textContent = employeeText;
+                        break;
+                    case 2:
+                        container3.textContent = employeeText;
+                        break;
+                    case 3:
+                        container4.textContent = employeeText;
+                        break;
+                    case 4:
+                        container5.textContent = employeeText;
+                        break;
+                    case 5:
+                        container6.textContent = employeeText;
+                        break;
+                    default:
+                        console.warn('Không đủ chỗ hiển thị thêm nhân viên!');
+                }
+            });
+        }
+
+        // Fetch API để lấy danh sách nhân viên từ server
+        fetch('/api/get-employee-info')
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    displayEmployees(data); // Gọi hàm hiển thị danh sách nhân viên
+                } else {
+                    console.error("Không tìm thấy nhân viên nào");
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+
+    <script>
+        document.querySelector('.AccountCircle').addEventListener('click', function() {
+            var menu = document.getElementById('profileMenu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'block'; // Hiển thị menu
+            } else {
+                menu.style.display = 'none'; // Ẩn menu
+            }
+        });
+
+        // Đóng menu khi click ra ngoài
+        document.addEventListener('click', function(event) {
+            var isClickInside = document.querySelector('.AccountCircle').contains(event.target) ||
+                                document.getElementById('profileMenu').contains(event.target);
+
+            if (!isClickInside) {
+                document.getElementById('profileMenu').style.display = 'none';
+            }
+        });
+
+        // Xử lý sự kiện click cho nút Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+        // Chuyển hướng đến trang đăng nhập
+        window.location.href = 'login';
+        });
+    </script>
+</div>
+    </body>
+</html>

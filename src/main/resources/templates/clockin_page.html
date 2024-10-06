@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Design</title>
+    <link rel="stylesheet" href="/clockin_style.css">
+</head>
+
+<body>
+    <div class="Wireframe9">
+        <!-- Video feed element -->
+        <img id="videoFeed" class="Rectangle40" autoplay playsinline></img>
+
+        <button onclick="clockIn()" class="Group47">
+
+            <div class="Clockin">Clock In</div>
+        </button>
+        <button onclick="clockOut()" class="Group48">
+
+            <div class="Clockout">Clock Out</div>
+    </div>
+    <div class="Component3">
+        <div class="Rectangle37">
+            <a href="/home_page" class="btn">
+                <div class="HomePage">Home Page</div>
+            </a>
+            <a href="/clockin_page" class="btn">
+                <div class="Mclockin">Clock In</div>
+            </a>
+            <a href="/salary_page" class="btn">
+                <div class="Salary">Salary</div>
+            </a>
+            <a href="/notification_page" class="btn">
+                <div class="Notification">Notification</div>
+            </a>
+            <a href="/absence_page" class="btn">
+                <div class="Absence">Absence</div>
+            </a>
+            <a href="/support_page" class="btn">
+                <div class="Support">Support</div>
+            </a>
+        </div>
+    </div>
+    <div class="Rectangle38">
+        <a href="/home_page" class="btn">
+            <div class="Workday">Workday</div>
+        </a>
+        <div class="Group33">
+            <div class="Rectangle39">
+                <input type="search" name="search" placeholder="Search" required>
+                <div class="Group36">
+                    <a href="/profile_page" class="AccountCircle">
+                        <img src="/asset/icon.png" alt="">
+                    </a>
+                    <div class="Bell">
+                        <img src="/asset/bell.png" alt="Notifications Bell">
+                    </div>
+                    <div class="Chat">
+                        <img src="/asset/mess.png" alt="Chat Icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Group39">
+        <div id="notification" class="ThNgBO">Thông báo</div>
+    </div>
+    <script>
+        function startVideo() {
+            const videoElement = document.getElementById('videoFeed');
+            videoElement.src = 'http://localhost:5000/video_feed';
+        }
+
+        window.onload = startVideo;
+
+        function clockIn() {
+            fetch('/clockin', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    const notification = document.getElementById('notification');
+                    notification.textContent = `Clock In successful! ${data.name}!`; // Use backticks here for template literals
+                    })
+                .catch(error => console.error('Error:', error));
+
+        }
+
+        function clockOut() {
+            fetch('/clockout', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    const notification = document.getElementById('notification');
+                    notification.textContent = `Clock Out successful! ${data.name}!`; // Use backticks here for template literals
+                    })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+    </div>
+</body>
+
+</html>

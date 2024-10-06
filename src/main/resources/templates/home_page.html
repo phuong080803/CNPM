@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workday Calendar</title>
+    <link rel="stylesheet" href="/home_page_style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    
+</head>
+<body>
+    <div class="Wireframe9">
+    
+        <div class="Rectangle40">
+            <div class="wrapper">
+                <header>
+                  <p class="current-date"></p>
+                  <div class="icons">
+                    <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                    <span id="next" class="material-symbols-rounded">chevron_right</span>
+                  </div>
+                </header>
+                <div class="calendar">
+                  <ul class="weeks">
+                    <li style="color: red;">Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li style="color: red;">Sat</li>
+                  </ul>
+                  <ul class="days"></ul>
+                </div>
+              </div>
+        </div>
+        </div>
+        <div class="Component3">  
+                <div class="Rectangle37">
+                    <a href="/home_page" class="btn">
+                        <div class="HomePage">Home Page</div> 
+                    </a>
+                    <a href="/clockin_page" class="btn">
+                        <div class="Mclockin">Clock In</div>
+                    </a>                                     
+                    <a href="/salary_page" class="btn">
+                        <div class="Salary">Salary</div>
+                    </a>
+                    <a href="/notification_page" class="btn">
+                        <div class="Notification">Notification</div>
+                    </a>
+                    <a href="/absence_page" class="btn">
+                        <div class="Absence">Absence</div>
+                    </a>
+                    <a href="/support_page" class="btn">
+                        <div class="Support">Support</div>
+                    </a>
+                </div>                        
+        </div>
+        <div class="Rectangle38">
+            <a href="/home_page" class="btn">
+                <div class="Workday">Workday</div>
+            </a>
+        <div class="Group33">
+            <div class="Rectangle39">
+                <input type="search" name="search" placeholder="Search" required> 
+                <div class="Group36">
+                    <a href="/profile_page" class="AccountCircle">
+                        <img src="/asset/icon.png" alt="">
+                    </a>
+                    <div class="Bell">
+                        <img src="/asset/bell.png" alt="">
+                    </div>
+                    <div class="Chat">
+                            <img src="/asset/mess.png" alt="">                                                
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        </div>
+        
+     
+        <div class="Group39">
+            <div class="ThNgBO">Thông báo</div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.querySelector('.AccountCircle').addEventListener('click', function() {
+            var menu = document.getElementById('profileMenu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'block'; // Hiển thị menu
+            } else {
+                menu.style.display = 'none'; // Ẩn menu
+            }
+        });
+
+        // Đóng menu khi click ra ngoài
+        document.addEventListener('click', function(event) {
+            var isClickInside = document.querySelector('.AccountCircle').contains(event.target) ||
+                                document.getElementById('profileMenu').contains(event.target);
+
+            if (!isClickInside) {
+                document.getElementById('profileMenu').style.display = 'none';
+            }
+        });
+
+        // Xử lý sự kiện click cho nút Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+        // Chuyển hướng đến trang đăng nhập
+        window.location.href = 'login';
+        });
+    </script>
+    
+
+<script>
+    const daysTag = document.querySelector(".days"),
+      currentDate = document.querySelector(".current-date"),
+      prevNextIcon = document.querySelectorAll(".icons span");
+
+let date = new Date(),
+    currYear = date.getFullYear(),
+    currMonth = date.getMonth(),
+    currDay = date.getDate(),
+    username; // Biến để lưu trữ username từ API
+
+const months = ["January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November", "December"];
+
+let attendenceData = {};
+
+// Hàm lấy username từ API
+const fetchUsername = async () => {
+    try {
+        const response = await fetch('/api/get-current-employee');
+        const data = await response.json();
+        username = data.username; // Lưu username từ API
+        console.log("Username:", username);
+        // Sau khi có username, gọi hàm renderCalendar
+        await renderCalendar();
+    } catch (error) {
+        console.error("Failed to fetch username", error);
+    }
+}
+
+// Hàm lấy dữ liệu điểm danh dựa trên username và ngày tháng năm
+const fetchAttendenceData = async (username, month, year, day) => {
+    try {
+        const response = await fetch(`/api/get-attendence-data?username=${username}&date=${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`);
+        const data = await response.json();
+        attendenceData[`${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`] = data;
+    } catch (error) {
+        console.error("Failed to fetch attendance data", error);
+    }
+}
+
+// Hàm hiển thị lịch và đánh dấu các ngày có điểm danh
+const renderCalendar = async () => {
+    try {
+        let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(),
+            lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(),
+            lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(),
+            lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
+
+        let liTag = "";
+
+        for (let i = firstDayofMonth; i > 0; i--) {
+            liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+        }
+
+        for (let i = 1; i <= lastDateofMonth; i++) {
+            const currentDateStr = `${currYear}-${String(currMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+            await fetchAttendenceData(username, currMonth + 1, currYear, i);
+
+            const attendence = attendenceData[currentDateStr] || [];
+            let isToday = i === date.getDate() && currMonth === new Date().getMonth()
+                        && currYear === new Date().getFullYear() ? "active" : "";
+            let attendedClass = attendence.length > 0 ? "has-attendance" : "";
+
+            liTag += `<li class="${isToday} ${attendedClass}" data-date="${currentDateStr}">
+                        ${i}
+                        ${attendence.length > 0 ? '<div class="dot"></div>' : ''}
+                      </li>`;
+        }
+
+        for (let i = lastDayofMonth; i < 6; i++) {
+            liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
+        }
+
+        currentDate.innerText = `${months[currMonth]} ${currYear}`;
+        daysTag.innerHTML = liTag;
+
+    } catch (error) {
+        console.error("Error rendering calendar:", error);
+    }
+}
+
+// Lắng nghe sự kiện click để chuyển tháng
+prevNextIcon.forEach(icon => {
+    icon.addEventListener("click", async () => {
+        currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+
+        if (currMonth < 0 || currMonth > 11) {
+            date = new Date(currYear, currMonth, new Date().getDate());
+            currYear = date.getFullYear();
+            currMonth = date.getMonth();
+        } else {
+            date = new Date();
+        }
+
+        await renderCalendar();
+    });
+});
+
+// Bắt đầu bằng việc lấy username và sau đó hiển thị lịch
+fetchUsername();
+</script>
+
+</body>
+</html>

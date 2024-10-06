@@ -1,0 +1,305 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.Wireframe9 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: white;
+
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    transform: translate(-50%, -50%);
+}
+
+.Cam {
+    width: 79px;
+    height: 45px;
+    position: absolute;
+    color: #004867;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    left: 803px;
+    top: 377px;
+}
+
+
+
+.HomePage:hover, .Mclockin:hover, .Salary:hover, .Notification:hover, .Support:hover, .Absence:hover {
+    color: #004867;
+    border-bottom: #004867 2px solid;
+}
+.Clockin {
+    width: 127px;
+    height: 44px;
+    left: 55px;
+    top: 16px;
+}
+
+.Clockout {
+    width: 149px;
+    height: 44px;
+    left: 44px;
+    top: 13px;
+}
+
+.Component3 {
+    width: 256px;
+    height: 1026px;
+    position: absolute;
+}
+
+.Rectangle37, .Rectangle53, .Rectangle52, .Rectangle51, .Rectangle50, .Rectangle49, .Rectangle48 {
+    background: white;
+    box-shadow: 0px 4px 9.9px rgba(0, 0, 0, 0.25);
+    position: absolute;
+}
+
+.Rectangle37 {
+    width: 256px;
+    height: 1026px;
+    position: fixed;
+}
+
+.Rectangle53 {
+    width: 256px;
+    height: 270px;
+    top: 405px;
+}
+
+.Rectangle52, .Rectangle51, .Rectangle50, .Rectangle49 {
+    width: 256px;
+    height: 270px;
+}
+
+.Rectangle52 {
+    top: 324px;
+}
+
+.Rectangle51 {
+    top: 243px;
+}
+
+.Rectangle50 {
+    top: 162px;
+}
+
+.Rectangle49 {
+    top: 81px;
+}
+
+.Rectangle38 {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    position: fixed;
+}
+
+.Workday {
+    left: 43px;
+    top:0px;
+    position: absolute;
+    color: #247BA0;
+    font-size: 65px;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+}
+
+.Group33 {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    left: 402px;
+    top: 40px;
+}
+
+.Rectangle39 {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    background: #DFDFDF;
+    border-radius: 27px;
+    left: 40px;
+    top: -15px;
+}
+
+input[type="search"] {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    border-radius: 27px;
+    padding: 20px;
+}
+
+.Vector {
+    background: rgba(0, 0, 0, 0.50);
+}
+
+.Group36 {
+    width: 200px;
+    height: 72px;
+    position: absolute;
+    left: 800px;
+    top: -20px;
+    z-index: 10;
+}
+
+.AccountCircle {  
+    position: absolute;
+    left: 150px;
+    top: 4px;
+    opacity: 0.8;
+}
+
+.Bell, .Chat, .AccountCircle {
+    width: 72px;
+    height: 72px;
+    padding: 6.75px;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.Bell img {
+    width: 36px;
+    height: 36px;
+}
+.Chat {
+    width: 58px;
+    height: 58px;
+    padding: 4.83px;
+    left: 80px;
+    top: 10px;
+    opacity: 0.8;
+}
+.Chat img {
+    width: 60px;
+    height: 50px;
+
+}
+.AccountCircle img {
+    width: 50px;
+    height: auto;
+   
+}   
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    transform: translate(-50%);
+}
+.profile-card {
+    background-color:  #EFEFF2;
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height:  600px;
+    text-align: center;
+}
+
+/* Phần cột chứa thông tin */
+.profile-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Chia toàn bộ chiều rộng của profile-card */
+    margin-top: 20px;
+}
+
+.login-info {
+    margin-top: 70px;
+}
+/* Phần ảnh đại diện */
+
+
+
+
+/* Các nút hành động */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+}
+
+.action-buttons button {
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: #004D67;
+    color: white;
+    cursor: pointer;
+}
+
+.action-buttons button:hover {
+    background-color: #004867;
+}
+form{
+    margin-top: 50px;
+}
+form input {
+    width: 70%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    color:#000600;
+    background-color: #dedfde;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: #ccc;
+    color: #333;
+}
+
+
+
+button:hover {
+    opacity: 0.8;
+}

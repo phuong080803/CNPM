@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Design</title>
+    <link rel="stylesheet" href="/addface_style.css">
+</head>
+
+<body>
+    <div class="Wireframe9">
+        <div class="Rectangle38">
+            <a href="/home_page" class="btn">
+                <div class="Workday">Workday</div>
+            </a>
+            <div class="Group33">
+                <div class="Rectangle39">
+                    <input type="search" name="search" placeholder="Search" required>
+                    <div class="Group36">
+                        <a href="/profile_page" class="AccountCircle">
+                            <img src="/asset/icon.png" alt="">
+                        </a>
+                        <div class="Bell">
+                            <img src="/asset/bell.png" alt="Notifications Bell">
+                        </div>
+                        <div class="Chat">
+                            <img src="/asset/mess.png" alt="Chat Icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-container">
+            <!-- Đảm bảo chỉ có 1 dấu gạch chéo trong URL của iframe -->
+            <video id="video" class="Rectangle40" autoplay></video>
+            <!-- Thêm input để người dùng nhập tên -->
+            <input type="text" id="userName" class="name" placeholder="Enter Your Name">
+            <button onclick="clockIn()" class="Group47">
+                <div class="Confirm">Confirm</div>
+            </button>
+            <button onclick="clockOut()" class="Group48">
+                <div class="Cancel">Cancel</div>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Hàm gửi yêu cầu POST khi người dùng nhấn nút Confirm
+        function clockIn() {
+            const name = document.getElementById('userName').value;  // Lấy tên từ input
+            if (!name) {
+                alert("Vui lòng nhập tên!");
+                return;
+            }
+            
+            fetch('http://localhost:5000/collect_face', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: name })  // Gửi tên người dùng
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to send data');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                alert(data.message || "Dữ liệu đã được gửi");
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Đã xảy ra lỗi khi gửi dữ liệu.");
+            });
+        }
+
+        function clockOut() {
+            alert("Hủy thao tác.");
+        }
+        const video = document.getElementById('video');
+
+        // Kiểm tra trình duyệt có hỗ trợ API getUserMedia không
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Yêu cầu quyền truy cập camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    // Gán stream của camera vào video
+                    video.srcObject = stream;
+                })
+                .catch(function(err) {
+                    console.log("Lỗi khi truy cập camera: " + err);
+                });
+        } else {
+            alert("Trình duyệt của bạn không hỗ trợ camera!");
+        }
+    </script>
+</body>
+
+</html>

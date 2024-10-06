@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Design</title>
+    <link rel="stylesheet" href="/profile_style.css?v1.1">
+</head>
+
+<body>
+    <div class="Wireframe9">
+        <div class="Rectangle38">
+            <a href="/home_page" class="btn">
+                <div class="Workday">Workday</div>
+            </a>
+            <div class="Group33">
+                <div class="Rectangle39">
+                    <input type="search" name="search" placeholder="Search" required>
+                    <div class="Group36">
+                        <a href="/profile_page" class="AccountCircle">
+                            <img src="/asset/icon.png" alt="">
+                        </a>
+                        <div class="Bell">
+                            <img src="/asset/bell.png" alt="Notifications Bell">
+                        </div>
+                        <div class="Chat">
+                            <img src="/asset/mess.png" alt="Chat Icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-container">
+            <div class="profile-card">
+
+                <div class="profile-columns">
+                    <div class="profile-pic">
+                        <img src="/asset/a.jpg" alt="Profile Picture">
+                        <a href="/edit_profile"><button class="edit-btn">Edit</button></a>
+                    </div>
+                    <div class="profile-info">
+                        <h2>Name - Staff ID: </h2>
+                        <p>Role: </p>
+                        <p>Gender: </p>
+                        <p>Address: </p>
+                        <p>Phone Number:</p>
+                        <p>Email: </p>
+                    </div>
+                    <div class="login-info">
+                        <p>Username: </p>
+                        <p>Password: </p>
+                    </div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <a href="/change_pass_page"><button>Change Password</button></a>
+                <a href="/addface_page" style="color: white;">
+                    <button>Add FaceID</button>
+                </a>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <script>
+        document.getElementById("logout-btn").addEventListener("click", async function () {
+            try {
+                // Gửi yêu cầu POST tới server để đăng xuất và invalidate session
+                const response = await fetch("/logout", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                });
+
+                // Kiểm tra phản hồi từ server
+                if (response.ok) {
+                    // Chuyển hướng về trang đăng nhập khi đăng xuất thành công
+                    window.location.href = "/login";
+                } else {
+                    console.error("Logout failed");
+                }
+            } catch (error) {
+                console.error("Error during logout", error);
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                // Gửi yêu cầu tới API để lấy thông tin người dùng
+                const response = await fetch("/api/profile");
+                if (response.ok) {
+                    const employee = await response.json();
+
+                    // Hiển thị thông tin nhân viên lên trang
+                    document.querySelector(".profile-info h2").textContent = `Name - Staff ID: ${employee.name} - ${employee.staffId}`;
+                    document.querySelector(".profile-info p:nth-child(2)").textContent = `Role: ${employee.role}`;
+                    document.querySelector(".profile-info p:nth-child(3)").textContent = `Gender: ${employee.gender}`;
+                    document.querySelector(".profile-info p:nth-child(4)").textContent = `Address: ${employee.address}`;
+                    document.querySelector(".profile-info p:nth-child(5)").textContent = `Phone Number: ${employee.phoneNumber}`;
+                    document.querySelector(".profile-info p:nth-child(6)").textContent = `Email: ${employee.email}`;
+
+                    // Hiển thị thông tin đăng nhập
+                    document.querySelector(".login-info p:nth-child(1)").textContent = `Username: ${employee.username}`;
+                    document.querySelector(".login-info p:nth-child(2)").textContent = `Password: ********`;  // Ẩn mật khẩu
+                } else {
+                    console.error("Failed to fetch profile data");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
