@@ -410,3 +410,10 @@ input[type="search"] {
     background: #004867;
     color: #fff;
   }
+  .has-attendance .dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgb(46, 177, 66); /* Hoặc màu bạn muốn */
+    border-radius: 50%;
+    margin: 0 auto;
+}

@@ -5,13 +5,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user_profile")
+@Table(name = "employee")
 public class UserProfile {
     @Id
     private Long id;
 
     private String name;
-    private String staffId;
+    private String id_employee;
     private String role;
     private String gender;
     private String address;
@@ -27,8 +27,8 @@ public class UserProfile {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    public String getStaffId() { return staffId; }
-    public void setStaffId(String staffId) { this.staffId = staffId; }
+    public String getStaffId() { return id_employee; }
+    public void setStaffId(String staffId) { this.id_employee = staffId; }
 
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
