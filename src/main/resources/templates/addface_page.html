@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wireframe Design</title>
+    <title>Thêm khuôn mặt</title>
     <link rel="stylesheet" href="/addface_style.css">
 </head>
 
@@ -16,10 +16,10 @@
             </a>
             <div class="Group33">
                 <div class="Rectangle39">
-                    <input type="search" name="search" placeholder="Search" required>
+                    <input type="search" name="search" placeholder="Tìm kiếm" required>
                     <div class="Group36">
                         <a href="/profile_page" class="AccountCircle">
-                            <img src="/asset/icon.png" alt="">
+                            <img src="/asset/icon.png" alt="Profile Icon">
                         </a>
                         <div class="Bell">
                             <img src="/asset/bell.png" alt="Notifications Bell">
@@ -32,29 +32,35 @@
             </div>
         </div>
         <div class="profile-container">
-            <!-- Đảm bảo chỉ có 1 dấu gạch chéo trong URL của iframe -->
-            <video id="video" class="Rectangle40" autoplay></video>
-            <!-- Thêm input để người dùng nhập tên -->
-            <input type="text" id="userName" class="name" placeholder="Enter Your Name">
+            <!-- Hiển thị luồng video từ server -->
+            <img id="videoFeed" class="Rectangle40" src="http://localhost:5000/video_feed" autoplay playsinline>
+
+            <!-- Input để người dùng nhập tên -->
+            <input type="text" id="userName" class="name" placeholder="Nhập tên của bạn">
             <button onclick="clockIn()" class="Group47">
-                <div class="Confirm">Confirm</div>
+                <div class="Confirm">Xác nhận</div>
             </button>
             <button onclick="clockOut()" class="Group48">
-                <div class="Cancel">Cancel</div>
+                <div class="Cancel">Hủy bỏ</div>
             </button>
         </div>
     </div>
 
     <script>
-        // Hàm gửi yêu cầu POST khi người dùng nhấn nút Confirm
         function clockIn() {
             const name = document.getElementById('userName').value;  // Lấy tên từ input
+            const confirmButton = document.querySelector('.Group47');  // Lấy nút xác nhận
+    
             if (!name) {
                 alert("Vui lòng nhập tên!");
                 return;
             }
-            
-            fetch('http://localhost:5000/collect_face', {
+    
+            // Disable button and change text to "Processing..."
+            confirmButton.disabled = true;
+            confirmButton.querySelector('.Confirm').innerText = 'Processing...';
+    
+            fetch('http://127.0.0.1:5000/collect_face', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -69,34 +75,24 @@
             })
             .then(data => {
                 console.log(data);
-                alert(data.message || "Dữ liệu đã được gửi");
+                alert(data.message || "Dữ liệu đã được gửi và xử lý thành công");
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert("Đã xảy ra lỗi khi gửi dữ liệu.");
+            })
+            .finally(() => {
+                // Re-enable button and change text back to "Xác nhận"
+                confirmButton.disabled = false;
+                confirmButton.querySelector('.Confirm').innerText = 'Xác nhận';
             });
         }
-
+    
         function clockOut() {
             alert("Hủy thao tác.");
         }
-        const video = document.getElementById('video');
-
-        // Kiểm tra trình duyệt có hỗ trợ API getUserMedia không
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            // Yêu cầu quyền truy cập camera
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(function(stream) {
-                    // Gán stream của camera vào video
-                    video.srcObject = stream;
-                })
-                .catch(function(err) {
-                    console.log("Lỗi khi truy cập camera: " + err);
-                });
-        } else {
-            alert("Trình duyệt của bạn không hỗ trợ camera!");
-        }
     </script>
+    
 </body>
 
 </html>
