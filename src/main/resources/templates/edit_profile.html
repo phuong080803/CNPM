@@ -19,8 +19,8 @@
                     <input type="search" name="search" placeholder="Search" required>
                     <div class="Group36">
                         <a href="/profile_page" class="AccountCircle">
-                        <img src="/asset/icon.png" alt="">
-                    </a>
+                            <img src="/asset/icon.png" alt="Account Icon">
+                        </a>
                         <div class="Bell">
                             <img src="/asset/bell.png" alt="Notifications Bell">
                         </div>
@@ -31,37 +31,60 @@
                 </div>
             </div>
         </div>
+        
         <div class="profile-container">
             <div class="profile-card">
-                
                 <div class="profile-columns">
                     <div class="profile-pic">
                         <img src="/asset/a.jpg" alt="Profile Picture">
-                        
                     </div>
-                    <form>
-                        <input type="text" placeholder="Name - Staff ID">
-                        <input type="text" placeholder="Role">
-                        <input type="text" placeholder="Gender">
-                        <input type="text" placeholder="Address">
-                        <input type="text" placeholder="Phone Number">
-                        <input type="email" placeholder="Email">
+                    <form method="POST" action="/api/profile">
+                        <input type="text" name="name" placeholder="Name - Staff ID" required>
+                        <input type="text" name="role" placeholder="Role" required>
+                        <input type="text" name="gender" placeholder="Gender" required>
+                        <input type="text" name="address" placeholder="Address" required>
+                        <input type="text" name="phoneNumber" placeholder="Phone Number" required>
+                        <input type="email" name="email" placeholder="Email" required>
                         <div class="action-buttons">
-                            <button type="submit" >Confirm</button>  
-                            <a href="/profile_page"><button type="button" >Cancel</button></a>
+                            <button type="submit">Confirm</button>
+                            <button type="button" onclick="window.location.href='/profile_page'">Cancel</button>
                         </div>
-                        
                     </form>
+                    
                 </div>
             </div>
-            
         </div>
-
-       
-       
-
     </div>
-   
+
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn form gửi mặc định
+
+            const formData = new FormData(this); // Lấy dữ liệu từ form
+
+            fetch(this.action, {
+                method: this.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Xử lý dữ liệu trả về (nếu cần)
+                if (data.success) {
+                    alert('Profile updated successfully!');
+                    window.location.href = '/profile_page'; // Chuyển hướng sau khi cập nhật thành công
+                } else {
+                    alert('Failed to update profile. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
 </body>
 
 </html>

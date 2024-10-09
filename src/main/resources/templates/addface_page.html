@@ -33,65 +33,65 @@
         </div>
         <div class="profile-container">
             <!-- Hiển thị luồng video từ server -->
-            <img id="videoFeed" class="Rectangle40" src="http://localhost:5000/video_feed" autoplay playsinline>
+            <img id="videoFeed" class="Rectangle40" src="http://localhost:5000/video_feed2" autoplay playsinline>
 
-            <!-- Input để người dùng nhập tên -->
-            <input type="text" id="userName" class="name" placeholder="Nhập tên của bạn">
-            <button onclick="clockIn()" class="Group47">
-                <div class="Confirm">Xác nhận</div>
-            </button>
-            <button onclick="clockOut()" class="Group48">
-                <div class="Cancel">Hủy bỏ</div>
-            </button>
-        </div>
-    </div>
 
-    <script>
-        function clockIn() {
-            const name = document.getElementById('userName').value;  // Lấy tên từ input
-            const confirmButton = document.querySelector('.Group47');  // Lấy nút xác nhận
-    
-            if (!name) {
-                alert("Vui lòng nhập tên!");
-                return;
+   <!-- Input để người dùng nhập ID -->
+<input type="text" id="userId" class="name" placeholder="Nhập ID của bạn">
+<button onclick="clockIn()" class="Group47">
+    <div class="Confirm">Xác nhận</div>
+</button>
+<button onclick="clockOut()" class="Group48">
+    <div class="Cancel">Hủy bỏ</div>
+</button>
+
+<script>
+    function clockIn() {
+        const userId = document.getElementById('userId').value;  // Lấy ID từ input
+        const confirmButton = document.querySelector('.Group47');  // Lấy nút xác nhận
+
+        if (!userId) {
+            alert("Vui lòng nhập ID!");
+            return;
+        }
+
+        // Disable button and change text to "Processing..."
+        confirmButton.disabled = true;
+        confirmButton.querySelector('.Confirm').innerText = 'Processing...';
+
+        fetch('http://127.0.0.1:5000/collect_face', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: userId })  // Gửi ID người dùng
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to send data');
             }
-    
-            // Disable button and change text to "Processing..."
-            confirmButton.disabled = true;
-            confirmButton.querySelector('.Confirm').innerText = 'Processing...';
-    
-            fetch('http://127.0.0.1:5000/collect_face', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name: name })  // Gửi tên người dùng
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to send data');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                alert(data.message || "Dữ liệu đã được gửi và xử lý thành công");
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Đã xảy ra lỗi khi gửi dữ liệu.");
-            })
-            .finally(() => {
-                // Re-enable button and change text back to "Xác nhận"
-                confirmButton.disabled = false;
-                confirmButton.querySelector('.Confirm').innerText = 'Xác nhận';
-            });
-        }
-    
-        function clockOut() {
-            alert("Hủy thao tác.");
-        }
-    </script>
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            alert(data.message || "Dữ liệu đã được gửi và xử lý thành công");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Đã xảy ra lỗi khi gửi dữ liệu.");
+        })
+        .finally(() => {
+            // Re-enable button and change text back to "Xác nhận"
+            confirmButton.disabled = false;
+            confirmButton.querySelector('.Confirm').innerText = 'Xác nhận';
+        });
+    }
+
+    function clockOut() {
+        alert("Hủy thao tác.");
+    }
+</script>
+
     
 </body>
 

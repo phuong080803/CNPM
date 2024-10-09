@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,28 +9,28 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" />
     <link rel="stylesheet" href="/employee_styles.css" />
 </head>
+
 <body>
     <div class="Wireframe9">
 
-
         <div class="Component3">
             <div class="Rectangle37">
-                <a href="/home_page" class="btn">
+                <a href="/admin/admin-home_page" class="btn">
                     <div class="HomePage">Home Page</div>
                 </a>
-                <a href="/clockin_page" class="btn">
-                    <div class="Mclockin">Clock In</div>
+                <a href="/admin/employee" class="btn">
+                    <div class="Mclockin">Employee</div>
                 </a>
-                <a href="/salary_page" class="btn">
-                    <div class="Salary">Salary</div>
+                <a href="/admin/admin-clockin_page" class="btn">
+                    <div class="Salary">Clockin</div>
                 </a>
-                <a href="/notification_page" class="btn">
-                    <div class="Notification">Notification</div>
+                <a href="/admin/admin-salary_page" class="btn">
+                    <div class="Notification">Salary</div>
                 </a>
-                <a href="/absence_page" class="btn">
+                <a href="/admin/admin-absence_page" class="btn">
                     <div class="Absence">Absence</div>
                 </a>
-                <a href="/support_page" class="btn">
+                <a href="/admin/admin-support_page" class="btn">
                     <div class="Support">Support</div>
                 </a>
             </div>
@@ -53,109 +54,107 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-        
+
         </div>
-    <!-- Icons Section -->
+        <!-- Icons Section -->
+        <div class="rectangle-c"><span class="add">Add</span></div>
 
-    <div class="rectangle-c"><span class="add">Add</span></div>
+        <div class="rectangle-d">
+            <span class="name-staff-id-1">Name - StaffID</span>
+        </div>
+        <div class="rectangle-e">
+            <span class="name-staff-id-2">Name - StaffID</span>
+        </div>
+        <div class="rectangle-f">
+            <span class="name-staff-id-3">Name - StaffID</span>
+        </div>
+        <div class="rectangle-g">
+            <span class="name-staff-id-4">Name - StaffID</span>
+        </div>
+        <div class="rectangle-h">
+            <span class="name-staff-id-5">Name - StaffID</span>
+        </div>
+        <div class="rectangle-i">
+            <span class="name-staff-id-6">Name - StaffID</span>
+        </div>
+        <div class="rectangle-0">
+            <button class="button-add">Add</button>
+        </div>
 
-    <div class="rectangle-d">
-        <span class="name-staff-id-1">Name - StaffID</span>
-    </div>
-    <div class="rectangle-e">
-        <span class="name-staff-id-2">Name - StaffID</span>
-    </div>
-    <div class="rectangle-f">
-        <span class="name-staff-id-3">Name - StaffID</span>
-    </div>
-    <div class="rectangle-g">
-        <span class="name-staff-id-4">Name - StaffID</span>
-    </div>
-    <div class="rectangle-h">
-        <span class="name-staff-id-5">Name - StaffID</span>
-    </div>
-    <div class="rectangle-0">
-        <button class="button-add">Add</button>
-    </div>
+        <div class="pagination">
+            <button id="prev-page" class="button-nav">Previous</button>
+            <span id="current-page">Page 1</span>
+            <button id="next-page" class="button-nav">Next</button>
+        </div>
 
-    <script>
-        function displayEmployees(employees) {
-            const container1 = document.querySelector('.name-staff-id-1');
-            const container2 = document.querySelector('.name-staff-id-2');
-            const container3 = document.querySelector('.name-staff-id-3');
-            const container4 = document.querySelector('.name-staff-id-4');
-            const container5 = document.querySelector('.name-staff-id-5');
-            const container6 = document.querySelector('.name-staff-id-6');
+        <script>
+            // Số nhân viên tối đa trên mỗi trang
+            const employeesPerPage = 5;
+            let currentPage = 1;
+            let totalPages = 1;
+            let employees = [];
 
-            employees.forEach((employee, index) => {
-                const employeeText = `${employee.name} - ${employee.id_employee}`;
+            // Function to display employees for the current page
+            function displayEmployeesForPage(page) {
+                const start = (page - 1) * employeesPerPage;
+                const end = start + employeesPerPage;
+                const employeesToShow = employees.slice(start, end);
 
-                switch (index) {
-                    case 0:
-                        container1.textContent = employeeText;
-                        break;
-                    case 1:
-                        container2.textContent = employeeText;
-                        break;
-                    case 2:
-                        container3.textContent = employeeText;
-                        break;
-                    case 3:
-                        container4.textContent = employeeText;
-                        break;
-                    case 4:
-                        container5.textContent = employeeText;
-                        break;
-                    case 5:
-                        container6.textContent = employeeText;
-                        break;
-                    default:
-                        console.warn('Không đủ chỗ hiển thị thêm nhân viên!');
+                const containers = [
+                    document.querySelector('.name-staff-id-1'),
+                    document.querySelector('.name-staff-id-2'),
+                    document.querySelector('.name-staff-id-3'),
+                    document.querySelector('.name-staff-id-4'),
+                    document.querySelector('.name-staff-id-5')
+                ];
+
+                // Clear previous entries
+                containers.forEach(container => container.textContent = '');
+
+                // Display employees for the current page
+                employeesToShow.forEach((employee, index) => {
+                    containers[index].textContent = `${employee.name} - ${employee.id_employee}`;
+                });
+
+                // Update current page display
+                document.getElementById('current-page').textContent = `Page ${currentPage}`;
+            }
+
+            // Fetch API to get employees from server
+            fetch('/api/get-employee-info')
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data) && data.length > 0) {
+                        employees = data; // Store the employee list
+                        totalPages = Math.ceil(employees.length / employeesPerPage); // Calculate total pages
+                        displayEmployeesForPage(currentPage); // Display first page of employees
+                    } else {
+                        console.error("Không tìm thấy nhân viên nào");
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+
+            // Add event listener for "Next" button
+            document.getElementById('next-page').addEventListener('click', function () {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayEmployeesForPage(currentPage);
                 }
             });
-        }
 
-        // Fetch API để lấy danh sách nhân viên từ server
-        fetch('/api/get-employee-info')
-            .then(response => response.json())
-            .then(data => {
-                if (Array.isArray(data) && data.length > 0) {
-                    displayEmployees(data); // Gọi hàm hiển thị danh sách nhân viên
-                } else {
-                    console.error("Không tìm thấy nhân viên nào");
+            // Add event listener for "Previous" button
+            document.getElementById('prev-page').addEventListener('click', function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayEmployeesForPage(currentPage);
                 }
-            })
-            .catch(error => console.error('Error:', error));
-    </script>
+            });
+        </script>
 
-    <script>
-        document.querySelector('.AccountCircle').addEventListener('click', function() {
-            var menu = document.getElementById('profileMenu');
-            if (menu.style.display === 'none' || menu.style.display === '') {
-                menu.style.display = 'block'; // Hiển thị menu
-            } else {
-                menu.style.display = 'none'; // Ẩn menu
-            }
-        });
 
-        // Đóng menu khi click ra ngoài
-        document.addEventListener('click', function(event) {
-            var isClickInside = document.querySelector('.AccountCircle').contains(event.target) ||
-                                document.getElementById('profileMenu').contains(event.target);
+    </div>
+</body>
 
-            if (!isClickInside) {
-                document.getElementById('profileMenu').style.display = 'none';
-            }
-        });
-
-        // Xử lý sự kiện click cho nút Logout
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-        // Chuyển hướng đến trang đăng nhập
-        window.location.href = 'login';
-        });
-    </script>
-</div>
-    </body>
 </html>

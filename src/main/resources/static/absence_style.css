@@ -12,13 +12,11 @@ body {
 
 .Rectangle40 {
     width: 900px;
-    height: 442px;
-    position: absolute;
+    height: 500px;
     background: #EFEFF2;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-    left: 402px;
-    top: 184px;
+    padding-top: 200px;
 }
 
 .Cam {
@@ -276,4 +274,83 @@ input[type="search"] {
     font-weight: 500;
     left: 341.78px;
     top: 19.82px;
+}
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    margin-left: 500px;
+    padding-top: 120px;
+  
+
+}
+.form-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.duration-bar {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    height: 30px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.duration-bar span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+.duration-fill {
+    width: 80%;
+    height: 100%;
+    background-color: #007bff;
+    border-radius: 4px;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+}
+.cancel-btn {
+    background-color: #ccc;
+    color: white;
+}
+.note {
+    color: red;
+    font-size: 14px;
 }
