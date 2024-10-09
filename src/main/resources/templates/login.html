@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,8 @@
         <div class="login-box">
             <h1>Welcome!</h1>
             <div class="error-text">
-                <p th:if="${error}" th:text="${error}" class="error-text"></p>
+                <!-- Hiển thị thông báo lỗi nếu có lỗi -->
+                <p th:if="${param.error}" class="error-text">Invalid username or password!</p>
             </div>
             <form action="/login" method="post">
                 <div class="input-container">
