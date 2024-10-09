@@ -451,7 +451,7 @@ display: flex;
 
 
 .rectangle-0 {
-    position: absolute; /* Allow positioning within its parent */
+    position: fixed; /* Allow positioning within its parent */
     width: 200px; /* Set width based on your layout */
     height: 100px; /* Set height based on your layout */
     top: 80px; /* Position it appropriately */
@@ -762,5 +762,39 @@ input[type="search"] {
   font-weight: 500;
   left: 341.78px;
   top: 19.82px;
+}
+
+/* CSS cho phần phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.button-nav {
+  background-color: #004867; /* Màu nền cho nút */
+  color: white; /* Màu chữ */
+  border: none; /* Bỏ đường viền */
+  padding: 10px 20px; /* Khoảng đệm cho nút */
+  margin: 0 10px; /* Khoảng cách giữa các nút */
+  cursor: pointer; /* Con trỏ chuột chuyển thành tay khi hover */
+  font-size: 16px; /* Kích thước chữ */
+  border-radius: 5px; /* Góc bo tròn cho nút */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
+}
+
+/* Hiệu ứng hover cho các nút */
+.button-nav:hover {
+  background-color: #45a049; /* Màu nền khi hover */
+}
+
+/* CSS để hiển thị trang hiện tại */
+#current-page {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 10px;
+  color: #333; /* Màu chữ */
 }
 

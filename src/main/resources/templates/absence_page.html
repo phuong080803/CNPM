@@ -56,10 +56,44 @@
                 </div>
             </div>
         </div>
-        <div class="Group39">
-            <div class="ThNgBO">Thông báo</div>
+ 
+        <div class="Group40">
+            <div class="form-container">
+                <h2>Leave Request Form</h2>
+            
+                <form>
+                    <label for="leave-type">Leave type</label>
+                    <select id="leave-type" required>
+                        <option value="personal">Personal leave</option>
+                        <option value="sick">Sick leave</option>
+                        <option value="vacation">Vacation leave</option>
+                    </select>
+            
+                    <label for="start-time">Start time</label>
+                    <input type="datetime-local" id="start-time" required>
+            
+                    <label for="end-time">End time</label>
+                    <input type="datetime-local" id="end-time" required>
+            
+                    <label for="duration">Duration (day)</label>
+                    <div class="duration-bar">
+                        <div class="duration-fill"></div>
+                        <span>80%</span>
+                    </div>
+            
+                    <label for="reason">Reason for leave</label>
+                    <textarea id="reason" rows="4" placeholder="Enter your reason..." required></textarea>
+            
+                    <div class="note">Please fill in required information to view the full approval process.</div>
+            
+                    <div class="buttons">
+                        <button type="submit" class="submit-btn">Submit</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            
         </div>
-
 
     </div>
 </body>

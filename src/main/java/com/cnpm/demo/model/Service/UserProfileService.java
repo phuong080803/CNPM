@@ -1,9 +1,10 @@
 package com.cnpm.demo.model.Service;
 
-import com.cnpm.demo.model.Model.UserProfile;
-import com.cnpm.demo.model.Repository.UserProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.cnpm.demo.model.Model.UserProfile;
+import com.cnpm.demo.model.Repository.UserProfileRepository;
 
 @Service
 public class UserProfileService {
