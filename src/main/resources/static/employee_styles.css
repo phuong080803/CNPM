@@ -1,589 +1,25 @@
-:root {
-  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-    "Source Han Sans CN", sans-serif;
-}
-
-.main-container {
-  overflow: hidden;
-}
-
-.main-container,
-.main-container * {
-  box-sizing: border-box;
-}
-
-input,
-select,
-textarea,
-button {
-  outline: 0;
-}
-
-.main-container {
-  width: 1440px;
-  height: 1024px;
-  margin: 0 auto;
-  background: #ffffff;
-  overflow: hidden;
-
-}
-
-
-/* Hover effect for AccountCircle */
-.AccountCircle img:hover {
-    background: #004867;
-    border-radius: 50%;
-    padding: 5px;
-}
-
-/* Phong cách cho dropdown menu */
-.dropdown-menu {
-    position: absolute;
-    top: 60px; /* Điều chỉnh khoảng cách từ hình ảnh */
-    right: 0;
-    background-color: #fff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 150px;
-    display: none; /* Ẩn menu mặc định */
-}
-
-.dropdown-menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown-menu li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-.dropdown-menu li:last-child {
-    border-bottom: none;
-}
-
-.dropdown-menu button {
-    background-color: #247BA0; /* Màu nền xanh dương cho nút */
-    color: white; /* Màu chữ trắng */
-    border: none;
-    width: 100%;
-    text-align: left;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px; /* Bo tròn các góc nút */
-    transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển màu và thu phóng nhẹ */
-}
-
-/* Hiệu ứng khi hover vào các nút */
-.dropdown-menu button:hover {
-    background-color: #1C3F52; /* Đổi màu nền khi hover */
-    transform: scale(1.05); /* Phóng to nhẹ khi hover */
-}
-
-/* Phong cách khi nút được nhấn xuống */
-.dropdown-menu button:active {
-    background-color: #1C3F52; /* Màu nền đậm hơn khi click */
-    transform: scale(0.98); /* Thu nhỏ nhẹ khi nhấn nút */
-}
-
-.group-icon-9 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 23;
-}
-.vector-icon-a {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-
-
-  background-size: 100% 100%;
-  z-index: 24;
-}
-.chat-icon {
-  position: absolute;
-  width: 58px;
-  height: 58px;
-  top: 38px;
-  left: 1229px;
-  z-index: 29;
-  overflow: hidden;
-}
-.vector {
-  position: relative;
-  width: 48.333px;
-  height: 48.334px;
-  margin: 4.833px 0 0 4.833px;
-
-
-  background-size: 100% 100%;
-  z-index: 30;
-}
-.rectangle-b {
-  position: absolute;
-  width: 648px;
-  height: 54px;
-  top: 40px;
-  left: 402px;
-  background: #dfdfdf;
-  z-index: 17;
-  border-radius: 27px;
-}
-.group-input {
-  position: absolute;
-  width: 648px;
-  height: 54px;
-  top: 0;
-  left: 0;
-  background: transparent;
-  border: none;
-  z-index: 20;
-  outline: none;
-}
-.search {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: absolute;
-  height: 23px;
-  top: 15px;
-  left: 61px;
-  color: rgba(0, 0, 0, 0.5);
-  font-family: Inter, var(--default-font-family);
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 23px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 18;
-}
-.vector-c {
-  position: absolute;
-  width: 3.09%;
-  height: 37.04%;
-  top: 31.48%;
-  left: 4.17%;
-  background: url(./assets/icon.png)
-    no-repeat center;
-  background-size: 100% 100%;
-  z-index: 19;
-}
-.rectangle-d {
-  
-  width: 880px;
-  height: 133px;
-  top: 187px;
-  margin-top: 182px;
-  margin-left: 402px;
-  left: 402px;
-  background: #efeff2;
-  z-index: 33;
-  border-radius: 15px;
-}
-.name-staff-id-1 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-e {
-  
-  width: 880px;
-  height: 133px;
-  margin-top: 20px;
-  margin-left: 402px;
-  background: #efeff2;
-  z-index: 36;
-  border-radius: 15px;
-}
-.name-staff-id-2 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-f {
-  width: 880px;
-  height: 133px;
-  margin-top: 20px;
-  margin-left: 402px;
-  background: #efeff2;
-  z-index: 39;
-  border-radius: 15px;
-}
-.name-staff-id-3 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-g {
-  
-  width: 880px;
-  height: 133px;
-  margin-top: 20px;
-  margin-left: 402px;
-  background: #efeff2;
-  z-index: 42;
-  border-radius: 15px;
-}
-.name-staff-id-4 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-h {
-  position: absolute;
-  width: 880px;
-  height: 133px;
-  top: 835px;
-  left: 402px;
-  background: #efeff2;
-  z-index: 45;
-  border-radius: 15px;
-}
-.name-staff-id-5 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-i {
-
-  width: 880px;
-  height: 133px;
-  margin-top: 20px;
-  margin-left: 402px;
-  background: #efeff2;
-  z-index: 45;
-  border-radius: 15px;
-}
-.name-staff-id-6 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-k {
-  position: absolute;
-  width: 880px;
-  height: 133px;
-  top: 835px;
-  left: 402px;
-  background: #efeff2;
-  z-index: 45;
-  border-radius: 15px;
-}
-.name-staff-id-7 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-l {
-  position: absolute;
-  width: 880px;
-  height: 133px;
-  top: 835px;
-  left: 402px;
-  background: #efeff2;
-  z-index: 45;
-  border-radius: 15px;
-}
-.name-staff-id-8 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-m{
-  position: absolute;
-  width: 880px;
-  height: 133px;
-  top: 835px;
-  left: 402px;
-  background: #efeff2;
-  z-index: 45;
-  border-radius: 15px;
-}
-.name-staff-id-9 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;
-}
-.rectangle-n {
-  position: absolute;
-  width: 880px;
-  height: 133px;
-  top: 835px;
-  left: 402px;
-  background: #efeff2;
-  z-index: 45;
-  border-radius: 15px;
-}
-.name-staff-id-10 {
-display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 38px;
-  padding-top: 48px;
-  margin-left: 61px;
-  left: 61px;
-  color: #004766;
-  font-family: Inter, var(--default-font-family);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 34;  
-}
-
-
-.rectangle-0 {
-    position: fixed; /* Allow positioning within its parent */
-    width: 200px; /* Set width based on your layout */
-    height: 100px; /* Set height based on your layout */
-    top: 80px; /* Position it appropriately */
-    right: 20px; /* Position it appropriately */
-    border-radius: 8px; /* Slightly rounded corners */
-    display: flex; /* Use flexbox for centering */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    z-index: 10; /* Ensure it appears above other elements */
-}
-
-.button-add {
-    background-color: #247BA0; /* Primary button color */
-    color: #ffffff; /* Text color */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding around the text */
-    font-size: 16px; /* Font size */
-    font-family: 'Inter', var(--default-font-family); /* Consistent font */
-    border-radius: 5px; /* Rounded button corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
-}
-
-.button-add:hover {
-    background-color: #1C3F52; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly enlarge the button */
-}
-
-.button-add:active {
-    transform: scale(0.95); /* Slightly shrink on click */
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
 }
-
-.Wireframe9 {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background: white;
-}
-
-.Rectangle40 {
-  width: 900px;
-  height: 442px;
-  position: absolute;
-  background: #EFEFF2;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  left: 402px;
-  top: 184px;
-}
-
-.Cam {
-  width: 79px;
-  height: 45px;
-  position: absolute;
-  color: #004867;
-  font-size: 32px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  left: 803px;
-  top: 377px;
-}
-
-
-
 .HomePage:hover, .Mclockin:hover, .Salary:hover, .Notification:hover, .Support:hover, .Absence:hover {
   color: #004867;
   border-bottom: #004867 2px solid;
 }
-.Clockin {
-  width: 127px;
-  height: 44px;
-  left: 55px;
-  top: 16px;
-}
-
-.Clockout {
-  width: 149px;
-  height: 44px;
-  left: 44px;
-  top: 13px;
-}
-
 .Component3 {
   width: 256px;
   height: 1026px;
   position: absolute;
 }
-
-.Rectangle37, .Rectangle53, .Rectangle52, .Rectangle51, .Rectangle50, .Rectangle49, .Rectangle48 {
+.Rectangle37 {
   background: white;
   box-shadow: 0px 4px 9.9px rgba(0, 0, 0, 0.25);
-  position: absolute;
-}
-
-.Rectangle37 {
   width: 256px;
   height: 1026px;
-  position: fixed;
+  position: relative;
+  left: 0;
 }
-
-.Rectangle53 {
-  width: 256px;
-  height: 270px;
-  top: 405px;
-}
-
-.Rectangle52, .Rectangle51, .Rectangle50, .Rectangle49 {
-  width: 256px;
-  height: 270px;
-}
-
-.Rectangle52 {
-  top: 324px;
-}
-
-.Rectangle51 {
-  top: 243px;
-}
-
-.Rectangle50 {
-  top: 162px;
-}
-
-.Rectangle49 {
-  top: 81px;
-}
-
 .Absence, .Support, .Notification, .Salary, .HomePage,.Mclockin {
   color: black;
   font-size: 32px;
@@ -593,42 +29,39 @@ body {
   padding: 0;
   border-bottom: #004867 2px solid;
 }
-
-
+.HomePage:hover, .Mclockin:hover, .Salary:hover, .Notification:hover, .Support:hover, .Absence:hover {
+    color: #004867;
+    border-bottom: #004867 2px solid;
+}
 .Absence {
   width: 183px;
   height: 54px;
   left: 36px;
   top: 520px;
 }
-
 .Support {
   width: 183px;
   height: 54px;
   left: 36px;
   top: 600px;
 }
-
 .Notification {
   width: 191px;
   height: 54px;
   left: 36px;
   top: 430px;
 }
-
 .Salary {
   width: 183px;
   height: 54px;
   left: 36px;
   top: 340px;
 }
-
 .HomePage {
   width: 183px;
   height: 54px;
   left: 36px;
   top: 160px;
-  
 }
 .Mclockin {
   width: 183px;
@@ -639,12 +72,11 @@ body {
 .Rectangle38 {
   width: 100%;
   height: 100px;
-  position: absolute;
   background: white;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-  position: fixed;
+  position: relative;
+  z-index: 10;
 }
-
 .Workday {
   left: 43px;
   top:0px;
@@ -654,13 +86,14 @@ body {
   font-family: 'Caveat', cursive;
   font-weight: 700;
 }
-
 .Group33 {
   width: 648px;
   height: 54px;
   position: absolute;
   left: 402px;
   top: 40px;
+  justify-content: center;
+  display: flex;
 }
 
 .Rectangle39 {
@@ -699,7 +132,7 @@ input[type="search"] {
   z-index: 10;
 }
 
-.AccountCircle {  
+.AccountCircle {
   position: absolute;
   left: 150px;
   top: 4px;
@@ -731,13 +164,15 @@ input[type="search"] {
 .Chat img {
   width: 60px;
   height: 50px;
-
 }
 .AccountCircle img {
   width: 50px;
   height: auto;
- 
-}   
+}
+.AccountCircle img :hover {
+    background: #004867;
+    border-radius: 50%;
+}
 .Group39 {
   width: 880px;
   height: 160px;
@@ -750,8 +185,6 @@ input[type="search"] {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
 }
-
-  
 .ThNgBO {
   width: 183.42px;
   height: 41.06px;
@@ -763,38 +196,293 @@ input[type="search"] {
   left: 341.78px;
   top: 19.82px;
 }
-
-/* CSS cho phần phân trang */
-.pagination {
-  display: flex;
-  justify-content: center;
+.rectangle-d {
+  width: 880px;
+  height: 133px;
+  top: 187px;
+  margin-top: 130px;
+  margin-left: 402px;
+  left: 402px;
+  background: #efeff2;
+  z-index: 33;
+  border-radius: 15px;
+  dixplay: flex;
   align-items: center;
+  padding-left: 20px;
+}
+.staff-row {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 40px;
+}
+
+.name-staff-id-1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 38px;
+  padding-top: 48px;
+  margin-left: 61px;
+  left: 61px;
+  color: #004766;
+  font-family: Inter, var(--default-font-family);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 34;
+}
+.rectangle-e {
+  width: 880px;
+  height: 133px;
   margin-top: 20px;
-  padding-top: 20px;
+  margin-left: 402px;
+  background: #efeff2;
+  z-index: 36;
+  border-radius: 15px;
+  dixplay: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.name-staff-id-2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 38px;
+  padding-top: 48px;
+  margin-left: 61px;
+  left: 61px;
+  color: #004766;
+  font-family: Inter, var(--default-font-family);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 34;
+}
+.rectangle-f {
+  width: 880px;
+  height: 133px;
+  margin-top: 20px;
+  margin-left: 402px;
+  background: #efeff2;
+  z-index: 39;
+  border-radius: 15px;
+  dixplay: flex;
+      align-items: center;
+      padding-left: 20px;
+}
+.name-staff-id-3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 38px;
+  padding-top: 48px;
+  margin-left: 61px;
+  left: 61px;
+  color: #004766;
+  font-family: Inter, var(--default-font-family);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 34;
+}
+.rectangle-g {
+  width: 880px;
+  height: 133px;
+  margin-top: 20px;
+  margin-left: 402px;
+  background: #efeff2;
+  z-index: 42;
+  border-radius: 15px;
+  dixplay: flex;
+      align-items: center;
+      padding-left: 20px;
+}
+.name-staff-id-4 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 38px;
+  padding-top: 48px;
+  margin-left: 61px;
+  left: 61px;
+  color: #004766;
+  font-family: Inter, var(--default-font-family);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 34;
+}
+.rectangle-h {
+  position: absolute;
+  width: 880px;
+  height: 133px;
+  top: 835px;
+  left: 402px;
+  background: #efeff2;
+  z-index: 45;
+  border-radius: 15px;
+  dixplay: flex;
+      align-items: center;
+      padding-left: 20px;
+}
+.name-staff-id-5 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 38px;
+  padding-top: 48px;
+  margin-left: 61px;
+  left: 61px;
+  color: #004766;
+  font-family: Inter, var(--default-font-family);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 34;
+}
+.rectangle-0 {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    top: 100px;
+    right: 80px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.button-add {
+    background-color: #247BA0;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-family: 'Inter', var(--default-font-family);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.button-add:hover {
+    background-color: #1C3F52;
+    transform: scale(1.05);
+}
+.button-add:active {
+    transform: scale(0.95);
+}
+.button-edit, .button-delete {
+    width: 100px;
+    padding: 10px 20px;
+    background-color: #004766;
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: 10px;
+}
+.button-edit:hover, .button-delete:hover {
+  background-color: #00354e;
+  transform: scale(1.05);
 }
 
-.button-nav {
-  background-color: #004867; /* Màu nền cho nút */
-  color: white; /* Màu chữ */
-  border: none; /* Bỏ đường viền */
-  padding: 10px 20px; /* Khoảng đệm cho nút */
-  margin: 0 10px; /* Khoảng cách giữa các nút */
-  cursor: pointer; /* Con trỏ chuột chuyển thành tay khi hover */
-  font-size: 16px; /* Kích thước chữ */
-  border-radius: 5px; /* Góc bo tròn cho nút */
-  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
+.button-edit:active, .button-delete:active {
+  transform: scale(0.95);
 }
 
-/* Hiệu ứng hover cho các nút */
-.button-nav:hover {
-  background-color: #45a049; /* Màu nền khi hover */
+.button-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+.alert-box {
+    position: fixed;
+    top: -100px; /* Ban đầu đặt nó ngoài màn hình, trên đầu trang */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #247BA0;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity 0.5s ease, top 0.5s ease;
 }
 
-/* CSS để hiển thị trang hiện tại */
-#current-page {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0 10px;
-  color: #333; /* Màu chữ */
+.alert-box.show {
+    top: 20px; /* Vị trí mà nó sẽ dừng lại sau khi trượt */
+    opacity: 1; /* Hiển thị alert */
 }
+
+/* Modal CSS */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Đảm bảo modal luôn ở trên cùng */
+}
+
+.modal-content {
+    background-color: #EFEFF2; /* Màu nền đồng nhất với phần còn lại */
+    margin: 10% auto; /* Đảm bảo modal hiển thị ở giữa */
+    padding: 20px;
+    width: 40%; /* Tăng kích thước để phù hợp hơn với tổng thể */
+    text-align: center;
+    border-radius: 15px; /* Đảm bảo bo góc như các phần tử khác */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25); /* Thêm shadow để nổi bật */
+    font-family: 'Inter', sans-serif; /* Đồng nhất với font chữ sử dụng */
+    color: #004766; /* Màu chữ đồng nhất */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.button-confirm, .button-cancel {
+    width: 100px;
+    padding: 10px 20px;
+    background-color: #004766;
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button-confirm:hover, .button-cancel:hover {
+    background-color: #00354e;
+    transform: scale(1.05);
+}
+
+.button-confirm:active, .button-cancel:active {
+    transform: scale(0.95);
+}
+
+
+
+
 
