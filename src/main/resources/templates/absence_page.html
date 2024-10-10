@@ -11,7 +11,7 @@
 <body>
     <div class="Wireframe9">
 
-
+        <!-- Thanh menu điều hướng -->
         <div class="Component3">
             <div class="Rectangle37">
                 <a href="/home_page" class="btn">
@@ -20,7 +20,6 @@
                 <a href="/clockin_page" class="btn">
                     <div class="Mclockin">Clock In</div>
                 </a>
-
                 <a href="/salary_page" class="btn">
                     <div class="Salary">Salary</div>
                 </a>
@@ -35,6 +34,8 @@
                 </a>
             </div>
         </div>
+
+        <!-- Thanh tìm kiếm và biểu tượng tài khoản -->
         <div class="Rectangle38">
             <a href="/home_page" class="btn">
                 <div class="Workday">Workday</div>
@@ -44,7 +45,7 @@
                     <input type="search" name="search" placeholder="Search" required>
                     <div class="Group36">
                         <a href="/profile_page" class="AccountCircle">
-                            <img src="/asset/icon.png" alt="">
+                            <img src="/asset/icon.png" alt="Profile Icon">
                         </a>
                         <div class="Bell">
                             <img src="/asset/bell.png" alt="Notifications Bell">
@@ -56,46 +57,52 @@
                 </div>
             </div>
         </div>
- 
-        <div class="Group40">
-            <div class="form-container">
-                <h2>Leave Request Form</h2>
-            
-                <form>
-                    <label for="leave-type">Leave type</label>
-                    <select id="leave-type" required>
-                        <option value="personal">Personal leave</option>
-                        <option value="sick">Sick leave</option>
-                        <option value="vacation">Vacation leave</option>
-                    </select>
-            
-                    <label for="start-time">Start time</label>
-                    <input type="datetime-local" id="start-time" required>
-            
-                    <label for="end-time">End time</label>
-                    <input type="datetime-local" id="end-time" required>
-            
-                    <label for="duration">Duration (day)</label>
-                    <div class="duration-bar">
-                        <div class="duration-fill"></div>
-                        <span>80%</span>
-                    </div>
-            
-                    <label for="reason">Reason for leave</label>
-                    <textarea id="reason" rows="4" placeholder="Enter your reason..." required></textarea>
-            
-                    <div class="note">Please fill in required information to view the full approval process.</div>
-            
-                    <div class="buttons">
-                        <button type="submit" class="submit-btn">Submit</button>
-                        <button type="button" class="cancel-btn">Cancel</button>
-                    </div>
-                </form>
-            </div>
-            
+
+        <!-- Form yêu cầu nghỉ phép -->
+        <div class="leave-form">
+            <form id="leaveRequestForm" class="leave-request-form" action="/submit-leave" method="post">
+                <label for="start-date">Ngày bắt đầu nghỉ:</label>
+                <input type="date" id="start-date" name="startDate" required>
+
+                <label for="end-date">Ngày kết thúc nghỉ:</label>
+                <input type="date" id="end-date" name="endDate" required>
+
+                <label for="reason">Lý do nghỉ:</label>
+                <textarea id="reason" name="reason" required></textarea>
+
+                <input type="submit" value="Submit">
+            </form>
         </div>
 
+
     </div>
+
+    <!-- JavaScript -->
+    <script>
+    document.getElementById("leaveRequestForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Ngăn chặn việc tải lại trang
+    
+        // Lấy dữ liệu từ form
+        const formData = new FormData(this);
+
+        // Gửi yêu cầu POST bằng Fetch API
+        fetch("/submit-leave", {
+            method: "POST",
+            body: new URLSearchParams(formData), // Chuyển đổi formData thành x-www-form-urlencoded
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        })
+        .then(response => response.text()) // Đọc phản hồi dưới dạng text
+        .then(message => {
+            // Hiển thị thông báo dưới dạng popup
+            alert(message);
+            document.getElementById("leaveRequestForm").reset();
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    </script>
+
 </body>
 
 </html>
