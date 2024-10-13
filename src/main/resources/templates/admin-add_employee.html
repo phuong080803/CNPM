@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkDay User Profile</title>
+    <link rel="stylesheet" href="/admin-add_employee_style.css">
+</head>
+<body>
+<div class="Component3">
+    <div class="Rectangle37">
+        <a href="/admin/admin-home_page" class="btn">
+            <div class="HomePage">Home Page</div>
+        </a>
+        <a href="/admin/employee" class="btn">
+            <div class="Mclockin">Employee</div>
+        </a>
+        <a href="/admin/admin-clockin_page" class="btn">
+            <div class="Salary">ClockIn</div>
+        </a>
+        <a href="/admin/admin-salary_page" class="btn">
+            <div class="Notification">Salary</div>
+        </a>
+        <a href="/admin/admin-absence_page" class="btn">
+            <div class="Absence">Absence</div>
+        </a>
+        <a href="/admin/admin-support_page" class="btn">
+            <div class="Support">Support</div>
+        </a>
+    </div>
+</div>
+<div class="Rectangle38">
+    <a href="/home_page" class="btn">
+        <div class="Workday">Workday</div>
+    </a>
+    <div class="Group33">
+        <div class="Rectangle39">
+            <input type="search" name="search" placeholder="Search" required>
+            <div class="Group36">
+                <a href="/profile_page" class="AccountCircle">
+                    <img src="/asset/icon.png" alt="">
+                </a>
+                <div class="Bell">
+                    <img src="/asset/bell.png" alt="">
+                </div>
+                <div class="Chat">
+                    <img src="/asset/mess.png" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="profile-section">
+        <h2 class="profile-header">Fill in the blanks</h2> <!-- Thêm dòng này -->
+        <form class="profile-form">
+            <input type="text" id="role" placeholder="Role" class="form-input" >
+            <input type="text" id="name" placeholder="Name" class="form-input" >
+            <input type="text" id="gender" placeholder="Gender" class="form-input" >
+            <input type="email" id="email" placeholder="Email" class="form-input">
+            <input type="text" id="address" placeholder="Address" class="form-input" >
+            <input type="text" id="phone" placeholder="Phone Number" class="form-input" >
+            <input type="text" id="username" placeholder="Username" class="form-input" >
+        </form>
+        <div class="buttons">
+            <button class="btn cancel" type="button" onclick="goBack()">Cancel</button>
+            <button class="btn confirm" type="button" onclick="submitForm()">Confirm</button>
+        </div>
+    </div>
+</div>
+<div id="success-alert" class="alert-box">
+    Employee added successfully!
+</div>
+
+<script>
+    function showAlert(message) {
+    const alertBox = document.getElementById('success-alert');
+    alertBox.innerText = message; // Thay đổi nội dung alert theo thông báo
+    alertBox.classList.add('show'); // Hiển thị alert box
+
+    // Tự động ẩn sau 3 giây
+    setTimeout(() => {
+        alertBox.classList.remove('show');
+    }, 3000);
+}
+
+function goBack() {
+    window.location.href = "/admin/employee";
+}
+
+function checkUsernameExists(username) {
+    return fetch(`/api/check-username?username=${username}`)
+        .then(response => response.json())
+        .then(data => data.exists); // API trả về { exists: true/false }
+}
+
+function submitForm() {
+    const name = document.getElementById('name').value;
+    const role = document.getElementById('role').value;
+    const gender = document.getElementById('gender').value;
+    const address = document.getElementById('address').value;
+    const phone = document.getElementById('phone').value;
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+
+    checkUsernameExists(username)
+        .then(exists => {
+            if (exists) {
+                showAlert("Username already exists. Please choose another.");
+                return;
+            }
+            const employeeData = {
+                name: name,
+                role: role,
+                gender: gender,
+                address: address,
+                phone: phone,
+                username: username,
+                email: email,
+                password: "123456" // Mật khẩu mặc định
+            };
+
+            fetch('/api/add-employee', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(employeeData),
+            })
+            .then(response => response.text()) // Chuyển đổi phản hồi sang text để log
+            .then(data => {
+                console.log(data); // Log kết quả phản hồi
+                showAlert('Employee added successfully!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showAlert('Failed to add employee.');
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+</script>
+</body>
+</html>
+
+<!--tạo API POST /api/add-employee để thêm nhân viên.-->
+<!--JS trên FE gửi dữ liệu từ form đến API thông qua fetch.-->
+<!--BE nhận dữ liệu và thêm vào cơ sở dữ liệu.-->
