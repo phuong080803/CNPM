@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Design</title>
+    <link rel="stylesheet" href="/admin-absence_style.css?v1.1">
+</head>
+
+<body>
+<div class="Wireframe9">
+
+    <div class="Component3">
+        <div class="Rectangle37">
+            <a href="/admin/admin-home_page" class="btn">
+                <div class="HomePage">Home Page</div>
+            </a>
+            <a href="/admin/employee" class="btn">
+                <div class="Mclockin">Employee</div>
+            </a>
+            <a href="/admin/admin-clockin_page" class="btn">
+                <div class="Salary">Clockin</div>
+            </a>
+            <a href="/admin/admin-salary_page" class="btn">
+                <div class="Notification">Salary</div>
+            </a>
+            <a href="/admin/admin-absence_page" class="btn">
+                <div class="Absence">Absence</div>
+            </a>
+            <a href="/admin/admin-support_page" class="btn">
+                <div class="Support">Support</div>
+            </a>
+        </div>
+    </div>
+    <div class="Rectangle38">
+        <a href="/home_page" class="btn">
+            <div class="Workday">Workday</div>
+        </a>
+        <div class="Group33">
+            <div class="Rectangle39">
+                <input type="search" name="search" placeholder="Search" required>
+                <div class="Group36">
+                    <a href="/profile_page" class="AccountCircle">
+                        <img src="/asset/icon.png" alt="">
+                    </a>
+                    <div class="Bell">
+                        <img src="/asset/bell.png" alt="Notifications Bell">
+                    </div>
+                    <div class="Chat">
+                        <img src="/asset/mess.png" alt="Chat Icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="absence-management">
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Employee ID</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Reason</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="leave-requests">
+                <!-- Dữ liệu sẽ được điền vào đây -->
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        async function fetchLeaveRequests() {
+            const response = await fetch("/api/leave-requests");
+            const leaveRequests = await response.json();
+
+            const tbody = document.getElementById("leave-requests");
+            leaveRequests.forEach((leave, index) => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${leave.idEmployee}</td>
+                    <td>${leave.startDate}</td>
+                    <td>${leave.endDate}</td>
+                    <td>${leave.reason}</td>
+                    <td>${leave.requestDate}</td>
+                    <td>${leave.status}</td>
+                    <td>
+                        <button onclick="approveRequest(${leave.idLeave})">Approve</button>
+                        <button onclick="rejectRequest(${leave.idLeave})">Reject</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        async function approveRequest(idLeave) {
+            await fetch(`/api/leave-requests/${idLeave}/approve`, { method: "POST" });
+            window.location.reload();
+        }
+
+        async function rejectRequest(idLeave) {
+            await fetch(`/api/leave-requests/${idLeave}/reject`, { method: "POST" });
+            window.location.reload();
+        }
+
+        document.addEventListener("DOMContentLoaded", fetchLeaveRequests);
+    </script>
+
+</div>
+</body>
+
+</html>

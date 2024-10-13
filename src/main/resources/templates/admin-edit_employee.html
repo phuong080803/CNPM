@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkDay User Profile</title>
+    <link rel="stylesheet" href="/admin-edit_employee_style.css">
+</head>
+<body>
+<div class="Component3">
+    <div class="Rectangle37">
+        <a href="/admin/admin-home_page" class="btn">
+            <div class="HomePage">Home Page</div>
+        </a>
+        <a href="/admin/employee" class="btn">
+            <div class="Mclockin">Employee</div>
+        </a>
+        <a href="/admin/admin-clockin_page" class="btn">
+            <div class="Salary">ClockIn</div>
+        </a>
+        <a href="/admin/admin-salary_page" class="btn">
+            <div class="Notification">Salary</div>
+        </a>
+        <a href="/admin/admin-absence_page" class="btn">
+            <div class="Absence">Absence</div>
+        </a>
+        <a href="/admin/admin-support_page" class="btn">
+            <div class="Support">Support</div>
+        </a>
+    </div>
+</div>
+<div class="Rectangle38">
+    <a href="/home_page" class="btn">
+        <div class="Workday">Workday</div>
+    </a>
+    <div class="Group33">
+        <div class="Rectangle39">
+            <input type="search" name="search" placeholder="Search" required>
+            <div class="Group36">
+                <a href="/profile_page" class="AccountCircle">
+                    <img src="/asset/icon.png" alt="">
+                </a>
+                <div class="Bell">
+                    <img src="/asset/bell.png" alt="">
+                </div>
+                <div class="Chat">
+                    <img src="/asset/mess.png" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="profile-section">
+        <h2 class="profile-header">Edit information employee</h2>
+        <form class="profile-form">
+            <input type="text" id="id_employee" placeholder="Employee ID" class="form-input" required>
+            <input type="text" id="name" placeholder="Name" class="form-input" >
+            <input type="text" id="gender" placeholder="Gender" class="form-input" >
+            <input type="email" id="email" placeholder="Email" class="form-input">
+            <input type="text" id="address" placeholder="Address" class="form-input" >
+            <input type="text" id="phone" placeholder="Phone Number" class="form-input" >
+        </form>
+        <div class="buttons">
+            <button class="btn cancel" type="button" onclick="goBack()">Cancel</button>
+            <button class="btn confirm" type="button" onclick="submitForm()">Confirm</button>
+        </div>
+    </div>
+</div>
+<div id="success-alert" class="alert-box">
+    Employee edited successfully!
+</div>
+
+<script>
+    // Hàm hiển thị alert
+    function showAlert(message) {
+        const alertBox = document.getElementById('success-alert');
+        alertBox.innerText = message;
+        alertBox.classList.add('show');
+        setTimeout(() => {
+            alertBox.classList.remove('show');
+        }, 3000);
+    }
+
+    // Hàm quay về trang danh sách nhân viên
+    function goBack() {
+        window.location.href = "/admin/employee";
+    }
+
+    // Hàm để tìm kiếm thông tin nhân viên dựa trên ID
+    function findEmployee() {
+        const idEmployee = document.getElementById('id_employee').value.trim();
+
+        if (!idEmployee || isNaN(idEmployee)) {
+            showAlert('Please enter a valid Employee ID (number only)');
+            return;
+        }
+
+        console.log('Fetching employee data for ID:', idEmployee);
+
+        fetch(`/api/get-employee-info/${idEmployee}`)
+            .then(response => {
+                console.log('Get employee response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Employee data received:', data);
+                if (data) {
+                    document.getElementById('name').value = data.name || '';
+                    document.getElementById('gender').value = data.gender || '';
+                    document.getElementById('email').value = data.email || '';
+                    document.getElementById('address').value = data.address || '';
+                    document.getElementById('phone').value = data.phone || '';
+                } else {
+                    throw new Error('No employee data received');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching employee:', error);
+                showAlert('Employee not found or error loading information');
+            });
+    }
+
+    // Hàm cập nhật thông tin nhân viên
+    function submitForm() {
+        const idEmployee = document.getElementById('id_employee').value.trim();
+
+        // Kiểm tra ID
+        if (!idEmployee || isNaN(idEmployee)) {
+            showAlert('Please enter a valid Employee ID (number only)');
+            return;
+        }
+
+        // Lấy và kiểm tra dữ liệu
+        const employeeData = {
+            name: document.getElementById('name').value.trim(),
+            gender: document.getElementById('gender').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            address: document.getElementById('address').value.trim(),
+            phone: document.getElementById('phone').value.trim()
+        };
+
+        // Kiểm tra dữ liệu bắt buộc
+        if (!employeeData.name || !employeeData.email) {
+            showAlert('Name and Email are required fields');
+            return;
+        }
+
+        console.log('Sending update request with data:', employeeData);
+
+        fetch(`/api/update-employee/${idEmployee}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(employeeData),
+        })
+        .then(response => {
+            console.log('Update response status:', response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Update response data:', data);
+            if (data.success) {
+                showAlert(data.message || 'Employee updated successfully!');
+                setTimeout(() => {
+                    window.location.href = "/admin/employee";
+                }, 3000);
+            } else {
+                throw new Error(data.message || 'Update failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error updating employee:', error);
+            showAlert(error.message || 'Failed to update employee');
+        });
+    }
+
+    // Thêm event listener khi trang được load
+    document.addEventListener('DOMContentLoaded', () => {
+        // Thêm event listener cho input ID
+        const idInput = document.getElementById('id_employee');
+        if (idInput) {
+            idInput.addEventListener('blur', findEmployee);
+        }
+
+        // Thêm event listener cho form để prevent default submission
+        const form = document.querySelector('.profile-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                submitForm();
+            });
+        }
+    });
+</script>
+</body>
+</html>
