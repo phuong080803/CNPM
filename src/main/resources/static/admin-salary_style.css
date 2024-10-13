@@ -1,0 +1,337 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.Wireframe9 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: white;
+}
+
+.Rectangle40 {
+    width: 900px;
+    height: 442px;
+    position: absolute;
+    background: #EFEFF2;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    left: 402px;
+    top: 184px;
+}
+
+.Cam {
+    width: 79px;
+    height: 45px;
+    position: absolute;
+    color: #004867;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    left: 803px;
+    top: 377px;
+}
+
+
+
+.HomePage:hover, .Mclockin:hover, .Salary:hover, .Notification:hover, .Support:hover, .Absence:hover {
+    color: #004867;
+    border-bottom: #004867 2px solid;
+}
+.Clockin {
+    width: 127px;
+    height: 44px;
+    left: 55px;
+    top: 16px;
+}
+
+.Clockout {
+    width: 149px;
+    height: 44px;
+    left: 44px;
+    top: 13px;
+}
+
+.Component3 {
+    width: 256px;
+    height: 1026px;
+    position: absolute;
+}
+
+.Rectangle37, .Rectangle53, .Rectangle52, .Rectangle51, .Rectangle50, .Rectangle49, .Rectangle48 {
+    background: white;
+    box-shadow: 0px 4px 9.9px rgba(0, 0, 0, 0.25);
+    position: absolute;
+}
+
+.Rectangle37 {
+    width: 256px;
+    height: 1026px;
+    position: fixed;
+}
+
+.Rectangle53 {
+    width: 256px;
+    height: 270px;
+    top: 405px;
+}
+
+.Rectangle52, .Rectangle51, .Rectangle50, .Rectangle49 {
+    width: 256px;
+    height: 270px;
+}
+
+.Rectangle52 {
+    top: 324px;
+}
+
+.Rectangle51 {
+    top: 243px;
+}
+
+.Rectangle50 {
+    top: 162px;
+}
+
+.Rectangle49 {
+    top: 81px;
+}
+
+.Absence, .Support, .Notification, .Salary, .HomePage,.Mclockin {
+    color: black;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    position: absolute;
+    padding: 0;
+    border-bottom: #004867 2px solid;
+}
+
+
+.Absence {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 520px;
+}
+
+.Support {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 600px;
+}
+
+.Notification {
+    width: 191px;
+    height: 54px;
+    left: 36px;
+    top: 430px;
+}
+
+.Salary {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 340px;
+}
+
+.HomePage {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 160px;
+
+}
+.Mclockin {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 250px;
+}
+.Rectangle38 {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    position: fixed;
+}
+
+.Workday {
+    left: 43px;
+    top:0px;
+    position: absolute;
+    color: #247BA0;
+    font-size: 65px;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+}
+
+.Group33 {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    left: 402px;
+    top: 40px;
+}
+
+.Rectangle39 {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    background: #DFDFDF;
+    border-radius: 27px;
+    left: 40px;
+    top: -15px;
+}
+
+input[type="search"] {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    border-radius: 27px;
+    padding: 20px;
+    background-color: #dedfde;
+}
+
+.Vector {
+    background: rgba(0, 0, 0, 0.50);
+}
+
+.Group36 {
+    width: 200px;
+    height: 72px;
+    position: absolute;
+    left: 800px;
+    top: -20px;
+    z-index: 10;
+}
+
+.AccountCircle {
+    position: absolute;
+    left: 150px;
+    top: 4px;
+    opacity: 0.8;
+}
+
+.Bell, .Chat, .AccountCircle {
+    width: 72px;
+    height: 72px;
+    padding: 6.75px;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.Bell img {
+    width: 36px;
+    height: 36px;
+}
+.Chat {
+    width: 58px;
+    height: 58px;
+    padding: 4.83px;
+    left: 80px;
+    top: 10px;
+    opacity: 0.8;
+}
+.Chat img {
+    width: 60px;
+    height: 50px;
+
+}
+.AccountCircle img {
+    width: 50px;
+    height: auto;
+
+}
+.Group39 {
+    width: 880px;
+    height: 160px;
+    position: absolute;
+    left: 402px;
+    top: 804px;
+    border-radius: 3px;
+    border : 1px solid #004867;
+    background: #EFEFF2;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+
+
+
+.payslip-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 150px;
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.employee-details {
+    margin-bottom: 20px;
+}
+
+.employee-details p {
+    margin: 5px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    vertical-align: top;
+}
+
+strong {
+    font-weight: bold;
+}
+
+thead {
+    background-color: #f8f8f8;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tbody tr td:nth-child(2), tbody tr td:nth-child(3) {
+    text-align: right;
+}

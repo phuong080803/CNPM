@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body {
+    background-color: #f4f4f4;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+.profile-section {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    top: 50px;
+    left: 100px;
+}
+.profile-header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2e7aa5;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-input {
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #e8e8e8;
+    cursor: not-allowed;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.cancel {
+    background-color: #2e7aa5;
+    color: white;
+}
+.confirm {
+    background-color: #2e7aa5;
+    color: white;
+}
+.Component3 {
+    width: 256px;
+    height: 1026px;
+    position: absolute;
+}
+.Rectangle37 {
+    background: white;
+    box-shadow: 0px 4px 9.9px rgba(0, 0, 0, 0.25);
+    width: 256px;
+    height: 1026px;
+    position: fixed;
+}
+.Rectangle38 {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    z-index: 10;
+}
+.Workday {
+    left: 43px;
+    top:0px;
+    position: absolute;
+    color: #247BA0;
+    font-size: 65px;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+}
+.Group33 {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    left: 402px;
+    top: 40px;
+    justify-content: center;
+    display: flex;
+}
+.Rectangle39 {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    background: #DFDFDF;
+    border-radius: 27px;
+    left: 40px;
+    top: -15px;
+}
+input[type="search"] {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    border-radius: 27px;
+    padding: 20px;
+    background-color: #dedfde;
+}
+.Vector {
+    background: rgba(0, 0, 0, 0.50);
+}
+.Group36 {
+    width: 200px;
+    height: 72px;
+    position: absolute;
+    left: 800px;
+    top: -20px;
+    z-index: 10;
+}
+
+.AccountCircle {
+    position: absolute;
+    left: 150px;
+    top: 4px;
+    opacity: 0.8;
+}
+
+.Bell, .Chat, .AccountCircle {
+    width: 72px;
+    height: 72px;
+    padding: 6.75px;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.Bell img {
+    width: 36px;
+    height: 36px;
+}
+.Chat {
+    width: 58px;
+    height: 58px;
+    padding: 4.83px;
+    left: 80px;
+    top: 10px;
+    opacity: 0.8;
+}
+.Chat img {
+    width: 60px;
+    height: 50px;
+
+}
+.AccountCircle img {
+    width: 50px;
+    height: auto;
+
+}
+.AccountCircle img :hover {
+    background: #004867;
+    border-radius: 50%;
+}
+
+.Absence, .Support, .Notification, .Salary, .HomePage,.Mclockin {
+    color: black;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    position: absolute;
+    padding: 0;
+    border-bottom: #004867 2px solid;
+}
+.HomePage:hover, .Mclockin:hover, .Salary:hover, .Notification:hover, .Support:hover, .Absence:hover {
+    color: #004867;
+    border-bottom: #004867 2px solid;
+}
+.Absence {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 520px;
+}
+.Support {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 600px;
+}
+.Notification {
+    width: 191px;
+    height: 54px;
+    left: 36px;
+    top: 430px;
+}
+.Salary {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 340px;
+}
+.HomePage {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 160px;
+}
+.Mclockin {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 250px;
+}
+.alert-box {
+    position: fixed;
+    top: -100px; /* Ban đầu đặt nó ngoài màn hình, trên đầu trang */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #247BA0;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity 0.5s ease, top 0.5s ease;
+}
+
+.alert-box.show {
+    top: 20px; /* Vị trí mà nó sẽ dừng lại sau khi trượt */
+    opacity: 1; /* Hiển thị alert */
+}
+
