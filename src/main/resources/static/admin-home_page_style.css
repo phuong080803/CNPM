@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+.Wireframe9 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: white;
+}
+.Rectangle40 {
+    width: 1000px;
+    height: 442px;
+    position: absolute;
+
+    border-radius: 15px;
+    left: 402px;
+    top: 184px;
+}
+.Cam {
+    width: 79px;
+    height: 45px;
+    position: absolute;
+    color: #004867;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    left: 803px;
+    top: 377px;
+}
+.Group47, .Group48 {
+    width: 237px;
+    height: 69px;
+    position: absolute;
+}
+.Group47 {
+    left: 402px;
+    top: 679px;
+}
+.Group48 {
+    left: 1050px;
+    top: 682px;
+}
+.Rectangle42 {
+    width: 237px;
+    height: 69px;
+    position: absolute;
+    background: #247BA0;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+.Clockin, .Clockout {
+    color: #EFEFF2;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    position: absolute;
+}
+.Employee {
+    width: 127px;
+    height: 44px;
+    left: 55px;
+    top: 16px;
+}
+.Clockout {
+    width: 149px;
+    height: 44px;
+    left: 44px;
+    top: 13px;
+}
+.Component3 {
+    width: 256px;
+    height: 1026px;
+    position: absolute;
+}
+.Rectangle37 {
+    background: white;
+    box-shadow: 0px 4px 9.9px rgba(0, 0, 0, 0.25);
+    width: 256px;
+    height: 1026px;
+    position: fixed;
+}
+.Absence, .Support, .Notification, .Salary, .HomePage,.Mclockin {
+    color: black;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    position: absolute;
+    padding: 0;
+    border-bottom: #004867 2px solid;
+}
+.HomePage:hover, .Mclockin:hover, .Salary:hover, .Notification:hover, .Support:hover, .Absence:hover {
+    color: #004867;
+    border-bottom: #004867 2px solid;
+}
+.Absence {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 520px;
+}
+.Support {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 600px;
+}
+.Notification {
+    width: 191px;
+    height: 54px;
+    left: 36px;
+    top: 430px;
+}
+.Salary {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 340px;
+}
+.HomePage {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 160px;
+}
+.Mclockin {
+    width: 183px;
+    height: 54px;
+    left: 36px;
+    top: 250px;
+}
+.Rectangle38 {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    z-index: 10;
+}
+.Workday {
+    left: 43px;
+    top:0px;
+    position: absolute;
+    color: #247BA0;
+    font-size: 65px;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+}
+.Group33 {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    left: 402px;
+    top: 40px;
+    justify-content: center;
+    display: flex;
+}
+
+.Rectangle39 {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    background: #DFDFDF;
+    border-radius: 27px;
+    left: 40px;
+    top: -15px;
+}
+
+input[type="search"] {
+    width: 648px;
+    height: 54px;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    border-radius: 27px;
+    padding: 20px;
+    background-color: #dedfde;
+}
+.Vector {
+    background: rgba(0, 0, 0, 0.50);
+}
+
+.Group36 {
+    width: 200px;
+    height: 72px;
+    position: absolute;
+    left: 800px;
+    top: -20px;
+    z-index: 10;
+}
+
+.AccountCircle {
+    position: absolute;
+    left: 150px;
+    top: 4px;
+    opacity: 0.8;
+}
+
+.Bell, .Chat, .AccountCircle {
+    width: 72px;
+    height: 72px;
+    padding: 6.75px;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.Bell img {
+    width: 36px;
+    height: 36px;
+}
+.Chat {
+    width: 58px;
+    height: 58px;
+    padding: 4.83px;
+    left: 80px;
+    top: 10px;
+    opacity: 0.8;
+}
+.Chat img {
+    width: 60px;
+    height: 50px;
+
+}
+.AccountCircle img {
+    width: 50px;
+    height: auto;
+
+}
+.AccountCircle img :hover {
+    background: #004867;
+    border-radius: 50%;
+}
+.Group39 {
+    width: 880px;
+    height: 160px;
+    position: absolute;
+    left: 402px;
+    top: 800px;
+    border-radius: 3px;
+    border : 1px solid #004867;
+    background: #EFEFF2;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+}
+
+
+.ThNgBO {
+    width: 183.42px;
+    height: 41.06px;
+    position: absolute;
+    color: #004867;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    left: 341.78px;
+    top: 0px;
+}
+.wrapper{
+    width: 700px;
+    background: #fff;
+    border-radius: 30px;
+    background: #EFEFF2;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+    left: 10%;
+    position: absolute;
+  }
+  .wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+  }
+  header .icons{
+    display: flex;
+  }
+  header .icons span{
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+  }
+  .icons span:last-child{
+    margin-right: -10px;
+  }
+  header .icons span:hover{
+    background: #f2f2f2;
+  }
+  header .current-date{
+    font-size: 1.45rem;
+    font-weight: 500;
+  }
+  .calendar{
+    padding: 20px;
+    z-index: -20;
+  }
+  .calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+  }
+  .calendar .days{
+    margin-bottom: 20px;
+  }
+  .calendar li{
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+  }
+  .calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+  }
+  .calendar .days li{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+  }
+  .days li.inactive{
+    color: #aaa;
+  }
+  .days li.active{
+    color: #fff;
+  }
+  .days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .days li.active::before{
+    background: #9B59B6;
+  }
+
+  .days li:not(.active):hover::before{
+    background: #004867;
+    color: #fff;
+  }
+  .has-attendance .dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgb(46, 177, 66); /* Hoặc màu bạn muốn */
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+
